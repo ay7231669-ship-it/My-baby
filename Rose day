@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3 Slide Interactive Page</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; overflow: hidden; }.slider { width: 300%; height: 100vh; display: flex; transition: transform 0.6s ease; }
+.slide { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 20px; text-align: center; }
+
+h1 { margin-bottom: 10px; }
+p { margin-bottom: 20px; }
+
+.btn { padding: 12px 25px; border-radius: 30px; border: none; cursor: pointer; font-size: 16px; margin: 5px; }
+.next { background: #00ffcc; color: #000; }
+.yes { background: #00ff88; color: #000; }
+.no { background: #ff4d4d; color: white; }
+
+.photo-box { width: 220px; height: 220px; border: 2px dashed #00ffcc; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 15px auto; }
+.photo-box input { color: white; }
+
+.rose { font-size: 80px; margin: 10px 0; }
+
+  </style>
+</head>
+<body>  <div class="slider" id="slider"><!-- Slide 1 -->
+<div class="slide">
+  <h1>Welcome 💫</h1>
+  <p>Enter your name and open the page</p>
+  <input type="text" id="name" placeholder="Enter your name" style="padding:10px;border-radius:10px;border:none;width:200px;text-align:center" />
+  <br />
+  <button class="btn next" onclick="nextSlide()">Open Page</button>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+  <h1>Your Photo Area 📸</h1>
+  <p>Upload your photo here</p>
+  <div class="photo-box">
+    <input type="file" accept="image/*" />
+  </div>
+  <button class="btn next" onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+  <h1 id="finalText">Will you accept this rose? 🌹</h1>
+  <div class="rose">🌹</div>
+  <button class="btn yes" onclick="acceptRose()">Yes</button>
+  <button class="btn no" onclick="rejectRose()">No</button>
+</div>
+
+  </div>  <script>
+    let index = 0;
+
+    function nextSlide() {
+      index++;
+      document.getElementById('slider').style.transform = `translateX(-${index * 100}vw)`;
+      const name = document.getElementById('name').value;
+      if(name) document.getElementById('finalText').innerText = `${name}, will you accept this rose? 🌹`;
+    }
+
+    function acceptRose() {
+      alert("Yay! Rose accepted 🌹❤️");
+    }
+
+    function rejectRose() {
+      alert("It's okay 😊");
+    }
+  </script></body>
+</html>
